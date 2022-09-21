@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+.completedTodo {
+  text-decoration: line-through;
+}
+#underlinetext {
+  text-decoration: underline;
+}
