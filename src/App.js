@@ -80,22 +80,35 @@ function App() {
       });
       setInput(op);
     };
+    const reset = () => {
+      const op = [];
+      input.forEach((inp) => {
+        if (inp.status == "active") {
+          inp.status = "none";
+        }
+        op.push(inp);
+      });
+      setInput(op);
+    };
     // console.log(input)
     return (
-      <ul>
-        {input.map((inp) => (
-          <li
-            className={inp.status === "complete" ? "completedTodo" : ""}
-            id={inp.status === "underline" ? "underlinetext" : ""}
-          >
-            {inp.content}{" "}
-            <button onClick={() => deleteToDo(inp.id)}>delete</button>
-            <button onClick={() => completeToDo(inp.id)}> compelete </button>
-            <button onClick={() => underlinetext(inp.id)}> Underline </button>
-        
-          </li>
-        ))}
-      </ul>
+      // <button onClick = {() => reset(inp.id)}>Reset</button>
+      <>
+        <ul>
+          {input.map((inp) => (
+            inp.status !== 'none' && (<li
+              className={inp.status === "complete" ? "completedTodo" : ""}
+              id={inp.status === "underline" ? "underlinetext" : ""}
+            >
+              {inp.content}{" "}
+              <button onClick={() => deleteToDo(inp.id)}>delete</button>
+              <button onClick={() => completeToDo(inp.id)}> compelete </button>
+              <button onClick={() => underlinetext(inp.id)}> Underline </button>
+            </li>)
+          ))}
+        </ul>
+        <button onClick={reset}>Reset</button>
+      </>
     );
   };
   return (
