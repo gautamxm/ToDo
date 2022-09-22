@@ -19,7 +19,14 @@ function App() {
         }}
       >
         <textarea
-          style={{}}
+          style={{
+            padding: "10px",
+            width: "40vw",
+            height: "200px",
+            border: "2px solid black",
+            borderRadius: "8px",
+            fontSize: "15px",
+          }}
           rows={4}
           // value={content}
           onChange={(e) => {
@@ -95,32 +102,43 @@ function App() {
       // <button onClick = {() => reset(inp.id)}>Reset</button>
       <>
         <ul>
-          {input.map((inp) => (
-            inp.status !== 'none' && (<li
-              className={inp.status === "complete" ? "completedTodo" : ""}
-              id={inp.status === "underline" ? "underlinetext" : ""}
-            >
-              {inp.content}{" "}
-              <button onClick={() => deleteToDo(inp.id)}>delete</button>
-              <button onClick={() => completeToDo(inp.id)}> compelete </button>
-              <button onClick={() => underlinetext(inp.id)}> Underline </button>
-            </li>)
-          ))}
+          {input.map(
+            (inp) =>
+              inp.status !== "none" && (
+                <li
+                  className={inp.status === "complete" ? "completedTodo" : ""}
+                  id={inp.status === "underline" ? "underlinetext" : ""}
+                >
+                  {inp.content}
+                  <button onClick={() => deleteToDo(inp.id)}>delete</button>
+                  <button onClick={() => completeToDo(inp.id)}>
+                    compelete
+                  </button>
+                  <button onClick={() => underlinetext(inp.id)}>
+                    Underline
+                  </button>
+                </li>
+              )
+          )}
+          <button onClick={reset}>Reset</button>
         </ul>
-        <button onClick={reset}>Reset</button>
+        {/* <button onClick={reset}>Reset</button> */}
       </>
     );
   };
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-        }}
-      >
+      <div>
+        <h1
+          style={{
+            textAlign: "center",
+            margin: " 20px",
+            padding: "40px 25px",
+            backgroundColor: "rgb(204, 224, 255)",
+          }}
+        >
+          To Do List
+        </h1>
         <AddTodo setInput={setInput} />
         <br />
         <ShowList input={input} setInput={setInput} />
