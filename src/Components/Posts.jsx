@@ -14,6 +14,18 @@ const Posts = () => {
       Content:
         "hey there thifmdsfm;fskdfdjsfdskbfskjdbf fkjdfhdskjhfbdskj kjdbfksdbfkjds",
     },
+    {
+      title: "third post",
+      description: "this is third post",
+      Content:
+        "hey there thifmdsfm;fskdfdjsfdskbfskjdbf fkjdfhdskjhfbdskj kjdbfksdbfkjds",
+    },
+    {
+      title: "fourth post",
+      description: "this is fourth post",
+      Content:
+        "hey there thifmdsfm;fskdfdjsfdskbfskjdbf fkjdfhdskjhfbdskj kjdbfksdbfkjds",
+    },
   ];
   const getCountUpto = (last) => {
     const count = [];
@@ -22,7 +34,7 @@ const Posts = () => {
     }
     return count;
   };
-  const totalpages = posts.length / 1;
+  const totalpages = posts.length;
   const [currentPage, setCurrentPage] = useState(1);
   const [currentPosts, setCurrentPosts] = useState([]);
   useEffect(() => {
@@ -38,12 +50,15 @@ const Posts = () => {
         {currentPosts.map((currentPost) => {
           return (
             <li>
-              <b>{currentPost.title}: </b> {currentPost.description}
+              <b>{currentPost.title}: </b> {currentPost.description} <br />
+              <em>{currentPost.Content}</em>
             </li>
           );
         })}
         <div style={{ display: "flex", justifyContent: "center" }}>
-          {getCountUpto(totalpages).map((count) => count)}
+          {getCountUpto(totalpages).map((count) => (
+            <button onClick={() => setCurrentPage(count)}> {count}</button>
+          ))}
         </div>
       </ul>
     </>
