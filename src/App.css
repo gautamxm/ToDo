@@ -42,3 +42,9 @@
 #underlinetext {
   text-decoration: underline;
 }
+button {
+  background-color: #3dc6df;
+  padding: 5px 10px;
+  border: 1px groove black;
+  border-radius: 5px;
+}

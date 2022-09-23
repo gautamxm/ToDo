@@ -20,7 +20,14 @@ function App() {
         }}
       >
         <textarea
-          style={{}}
+          style={{
+            padding: "10px",
+            width: "40vw",
+            height: "200px",
+            border: "2px solid black",
+            borderRadius: "8px",
+            fontSize: "15px",
+          }}
           rows={4}
           // value={content}
           onChange={(e) => {
@@ -103,26 +110,28 @@ function App() {
                   className={inp.status === "complete" ? "completedTodo" : ""}
                   id={inp.status === "underline" ? "underlinetext" : ""}
                 >
-                  {inp.content}{" "}
+
+           
+                  {inp.content}
                   <button onClick={() => deleteToDo(inp.id)}>delete</button>
                   <button onClick={() => completeToDo(inp.id)}>
-                    {" "}
-                    compelete{" "}
+                    compelete
                   </button>
                   <button onClick={() => underlinetext(inp.id)}>
-                    {" "}
-                    Underline{" "}
+                    Underline
+
                   </button>
                 </li>
               )
           )}
+
+          <button onClick={reset}>Reset</button>
         </ul>
-        <button onClick={reset}>Reset</button>
+        {/* <button onClick={reset}>Reset</button> */}
       </>
     );
   };
-  return (
-    <>
+  return 
       {/* <div
         style={{
           display: "flex",
@@ -130,7 +139,8 @@ function App() {
           alignItems: "center",
           flexDirection: "column",
         }}
-      >
+    
+
         <AddTodo setInput={setInput} />
         <br />
         <ShowList input={input} setInput={setInput} />
