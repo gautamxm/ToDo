@@ -3,6 +3,7 @@ import "./App.css";
 import Profile from "./Components/Function";
 import React, { useEffect, useState } from "react";
 import Car from "./Components/Car";
+import Posts from "./Components/Posts";
 
 function App() {
   const [input, setInput] = useState([]);
@@ -95,17 +96,26 @@ function App() {
       // <button onClick = {() => reset(inp.id)}>Reset</button>
       <>
         <ul>
-          {input.map((inp) => (
-            inp.status !== 'none' && (<li
-              className={inp.status === "complete" ? "completedTodo" : ""}
-              id={inp.status === "underline" ? "underlinetext" : ""}
-            >
-              {inp.content}{" "}
-              <button onClick={() => deleteToDo(inp.id)}>delete</button>
-              <button onClick={() => completeToDo(inp.id)}> compelete </button>
-              <button onClick={() => underlinetext(inp.id)}> Underline </button>
-            </li>)
-          ))}
+          {input.map(
+            (inp) =>
+              inp.status !== "none" && (
+                <li
+                  className={inp.status === "complete" ? "completedTodo" : ""}
+                  id={inp.status === "underline" ? "underlinetext" : ""}
+                >
+                  {inp.content}{" "}
+                  <button onClick={() => deleteToDo(inp.id)}>delete</button>
+                  <button onClick={() => completeToDo(inp.id)}>
+                    {" "}
+                    compelete{" "}
+                  </button>
+                  <button onClick={() => underlinetext(inp.id)}>
+                    {" "}
+                    Underline{" "}
+                  </button>
+                </li>
+              )
+          )}
         </ul>
         <button onClick={reset}>Reset</button>
       </>
@@ -113,7 +123,7 @@ function App() {
   };
   return (
     <>
-      <div
+      {/* <div
         style={{
           display: "flex",
           justifyContent: "center",
@@ -124,7 +134,8 @@ function App() {
         <AddTodo setInput={setInput} />
         <br />
         <ShowList input={input} setInput={setInput} />
-      </div>
+      </div> */}
+      <Posts />
     </>
   );
 }
