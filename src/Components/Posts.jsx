@@ -1,20 +1,6 @@
 import { useEffect, useState } from "react";
 
 const Posts = () => {
-  const posts = [
-    {
-      title: "first post",
-      description: "this is first post",
-      Content:
-        "hey there thifmdsfm;ldglglfgldgmldfjgmkjgklgnkrlnrtlkngtrlkntrlknrktnrtklbntrljgnb",
-    },
-    {
-      title: "second post",
-      description: "this is second post",
-      Content:
-        "hey there thifmdsfm;fskdfdjsfdskbfskjdbf fkjdfhdskjhfbdskj kjdbfksdbfkjds",
-    },
-  ];
   const getCountUpto = (last) => {
     const count = [];
     for (let i = 1; i <= last; i++) {
@@ -22,28 +8,39 @@ const Posts = () => {
     }
     return count;
   };
-  const totalpages = posts.length / 1;
+  const [totalpages, setTotalPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [currentPosts, setCurrentPosts] = useState([]);
+  const [currentUSersList, setCurrentUserList] = useState([]);
+  const getUsersFromApi = async (pageNum) => {
+    return fetch(`https://reqres.in/api/users?page=${pageNum}`);
+  };
   useEffect(() => {
-    // code to dfetch from api
-    const start = (currentPage - 1) * 1;
-    const end = currentPage * 1;
-    setCurrentPosts(posts.slice(start, end));
+    getUsersFromApi(currentPage)
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        console.log(" this is the res", res);
+        setCurrentUserList(res.data);
+        setTotalPage(res.total_pages);
+      });
     // setCurrentPosts([posts[0]]);
   }, [currentPage]);
   return (
     <>
       <ul>
-        {currentPosts.map((currentPost) => {
+        {currentUSersList.map((currentUSer) => {
           return (
             <li>
-              <b>{currentPost.title}: </b> {currentPost.description}
+              <img src={currentUSer.avatar} />
+              <b>{currentUSer.first_name}: </b> {currentUSer.email} <br />
             </li>
           );
         })}
         <div style={{ display: "flex", justifyContent: "center" }}>
-          {getCountUpto(totalpages).map((count) => count)}
+          {getCountUpto(totalpages).map((count) => (
+            <button onClick={() => setCurrentPage(count)}> {count}</button>
+          ))}
         </div>
       </ul>
     </>
