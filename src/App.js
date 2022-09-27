@@ -4,6 +4,7 @@ import Profile from "./Components/Function";
 import React, { useEffect, useState } from "react";
 import Car from "./Components/Car";
 import Posts from "./Components/Posts";
+import Fetching from "./Components/Fetching";
 
 function App() {
   const [input, setInput] = useState([]);
@@ -110,8 +111,6 @@ function App() {
                   className={inp.status === "complete" ? "completedTodo" : ""}
                   id={inp.status === "underline" ? "underlinetext" : ""}
                 >
-
-           
                   {inp.content}
                   <button onClick={() => deleteToDo(inp.id)}>delete</button>
                   <button onClick={() => completeToDo(inp.id)}>
@@ -119,7 +118,6 @@ function App() {
                   </button>
                   <button onClick={() => underlinetext(inp.id)}>
                     Underline
-
                   </button>
                 </li>
               )
@@ -131,7 +129,8 @@ function App() {
       </>
     );
   };
-  return 
+  return (
+    <>
       {/* <div
         style={{
           display: "flex",
@@ -145,7 +144,8 @@ function App() {
         <br />
         <ShowList input={input} setInput={setInput} />
       </div> */}
-      <Posts />
+      {/* <Posts /> */}
+      <Fetching />
     </>
   );
 }
