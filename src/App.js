@@ -1,11 +1,12 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Profile from "./Components/Function";
-import React, { useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import Car from "./Components/Car";
 import Posts from "./Components/Posts";
 import Fetching from "./Components/Fetching";
-
+// import Traffic from "./Components/Traffic";
+import Apidata from "./Components/Apidata";
 function App() {
   const [input, setInput] = useState([]);
 
@@ -138,14 +139,15 @@ function App() {
           alignItems: "center",
           flexDirection: "column",
         }}
-    
-
+  
         <AddTodo setInput={setInput} />
         <br />
         <ShowList input={input} setInput={setInput} />
       </div> */}
       {/* <Posts /> */}
-      <Fetching />
+      {/* <Fetching /> */}
+      {/* <Traffic /> */}
+      <Apidata />
     </>
   );
 }

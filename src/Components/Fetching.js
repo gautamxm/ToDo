@@ -11,7 +11,6 @@ function Fetching() {
   }, []);
   return (
     <>
-      <h2>Fetching API Data</h2>
       <div>
         {users.map((curuser) => {
           return (
