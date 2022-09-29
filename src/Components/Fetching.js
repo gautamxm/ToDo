@@ -23,7 +23,6 @@ function Fetching() {
   }, [currentPage]);
   return (
     <>
-      <h2>Fetching API Data</h2>
       <div>
         {users.map((curuser, index) => {
           return (
