@@ -10,39 +10,57 @@ const Apidata = () => {
     setUsers(await data.json());
   };
   const fetchCurrentPost = async (postId) => {
-    const postRawData = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`);
-    const postData = await postRawData.json()
-    console.log('bro ', postData)
-    setCurrentPostData(postData)
-  }
+    const postRawData = await fetch(
+      `https://jsonplaceholder.typicode.com/posts/${postId}`
+    );
+    const postData = await postRawData.json();
+    console.log("bro ", postData);
+    setCurrentPostData(postData);
+  };
   useEffect(() => {
     getPosts();
   }, []);
 
   useEffect(() => {
     if (currentPost !== -1) {
-        fetchCurrentPost(currentPost)
+      fetchCurrentPost(currentPost);
     }
-  }, [currentPost])
+  }, [currentPost]);
   const data = (post) => {
-    console.log(post)
-    setCurrentPost(post.id)
+    console.log(post);
+    setCurrentPost(post.id);
   };
   if (currentPost === -1) {
     return (
-        <>
+      <>
+        <div id="container">
           {users.map((post) => {
             return (
-              <p>
-                <button onClick={() => data(post)}>{post.title}</button>
-              </p>
+              <div onClick={() => data(post)} id="list">
+                <p>{post.title}</p>
+              </div>
             );
           })}
-        </>
-      );
-  }console.log(currentPostData)
-  return <>{currentPostData.title} - {currentPostData.body} <button onClick={() => setCurrentPost(-1)}>cick here to go back</button></>
-  
+        </div>
+      </>
+    );
+  }
+  console.log(currentPostData);
+  return (
+    <>
+      <div id="title">
+        <b>Title Is</b> <br /> {currentPostData.title}
+      </div>
+      <div id="data">
+        <b>Body Contained</b> <br /> {currentPostData.body}
+      </div>
+      <div id="bbtn">
+        <button id="backbtn" onClick={() => setCurrentPost(-1)}>
+          GO BACKKK !
+        </button>
+      </div>
+    </>
+  );
 };
 
 export default Apidata;
