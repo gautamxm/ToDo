@@ -3,11 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import LearnContext from './Components/learnContext';
+import { Provider, useDispatch } from "react-redux";
+import { store } from './Components/Store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-    <App />
+    // <App />
+    <Provider store={store}>
+    <LearnContext />
+    </Provider>
   /* </React.StrictMode> */
 );
 
